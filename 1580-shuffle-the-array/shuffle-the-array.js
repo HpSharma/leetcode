@@ -5,9 +5,9 @@
  */
 var shuffle = function (nums, n) {
     let arr = [];
-    for (let i = 0, j = n; i < n; i++, j++) {
+    for (let i = 0; i < n; i++) {
         arr.push(nums[i]);
-        arr.push(nums[j]);
+        arr.push(nums[i + n]);
     }
     return arr;
 };
