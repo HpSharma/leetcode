@@ -4,14 +4,12 @@
  */
 var once = function(fn) {
     let called = false;
-    let result = 0;
     return function(...args){
-        if (!called) {
-            result = fn(...args);
-            called = true;
-            return result;
-        } else {
+        if (called) {
             return undefined;
+        } else {
+            called = true;
+            return fn(...args);
         }
     }
 };
