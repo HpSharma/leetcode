@@ -3,11 +3,15 @@
  * @return {Function}
  */
 var once = function(fn) {
-    let callCount = 0;
-    return function(...args) {
-        if (!callCount) {
-            callCount++;
-            return fn(...args);
+    let called = false;
+    let result = 0;
+    return function(...args){
+        if (!called) {
+            result = fn(...args);
+            called = true;
+            return result;
+        } else {
+            return undefined;
         }
     }
 };
